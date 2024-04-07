@@ -1,0 +1,35 @@
+Histogram Equalization,
+Görüntü işelme alanında kullanılan bir tekniktir.Görüntünün kontrastını arttırmakn için kullanılır.Bu işlem görüntünün histogramını kullanarak görüntünün piksel dağılımını dengeler ve daha iyi kontrast elde etmeyi sağlar.
+
+Genellikle, bir görüntünün histogramı, görüntüdeki farklı piksel değerlerinin (genellikle 0 ile 255 arasında) görülme sıklığını gösterir. 
+
+Eğer bir görüntünün histogramı geniş bir aralıkta homojen olarak dağılmışsa, görüntünün kontrastı yüksektir ve detaylar daha iyi görülebilir. Ancak, eğer histogram belirli bir aralıkta yoğunlaşmışsa, görüntünün kontrastı düşük olabilir ve detaylar belirsizleşebilir.
+
+Histogram daha homojen dağılmayı sağlar.Temel olarak, bir görüntünün kümülatif dağılım fonksiyonu (CDF) hesaplanır ve bu fonksiyon kullanılarak piksel değerleri yeniden düzenlenir. Sonuç olarak, görüntüdeki piksel değerleri daha geniş bir aralığa dağılır ve kontrast artar.
+Bazı durumlarda aşırı eşitleme yapılması sonucunda görüntüdeki detayların kaybolabileceği veya istenmeyen artefaktların oluşabileceği unutulmamalıdır. 
+
+
+***************************
+
+import cv2
+import numpy as np
+
+def histogram_equalization(image):
+    # Histogram eşitleme işlemi
+    equalized_image = cv2.equalizeHist(image)
+    return equalized_image
+
+# Örnek bir görüntü yükleme (grayscale)
+image = cv2.imread("example_image.jpg", cv2.IMREAD_GRAYSCALE)
+
+# Histogram eşitleme uygulama
+equalized_image = histogram_equalization(image)
+
+# Görüntüyü gösterme
+cv2.imshow("Original Image", image)
+cv2.imshow("Equalized Image", equalized_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+***************************
