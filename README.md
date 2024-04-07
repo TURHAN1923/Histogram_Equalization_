@@ -22,25 +22,3 @@ It should be kept in mind that in some cases, as a result of excessive equalizat
 
 ***************************
 
-import cv2
-import numpy as np
-
-def histogram_equalization(image):
-    # Histogram eşitleme işlemi
-    equalized_image = cv2.equalizeHist(image)
-    return equalized_image
-
-# Örnek bir görüntü yükleme (grayscale)
-image = cv2.imread("example_image.jpg", cv2.IMREAD_GRAYSCALE)
-
-# Histogram eşitleme uygulama
-equalized_image = histogram_equalization(image)
-
-# Görüntüyü gösterme
-cv2.imshow("Original Image", image)
-cv2.imshow("Equalized Image", equalized_image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-
-***************************
